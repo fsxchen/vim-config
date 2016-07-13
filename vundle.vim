@@ -46,3 +46,4 @@ filetype plugin indent on    " required
 
 " 自动补全
 Bundle 'Valloric/YouCompleteMe'
+Bundle 'https://github.com/davidhalter/jedi-vim.git'
