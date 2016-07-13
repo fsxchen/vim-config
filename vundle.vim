@@ -46,4 +46,11 @@ filetype plugin indent on    " required
 
 " 自动补全
 Bundle 'Valloric/YouCompleteMe'
+
+"python自动补全
 Bundle 'https://github.com/davidhalter/jedi-vim.git'
+
+"目录树插件
+Bundle 'https://github.com/scrooloose/nerdtree.git'
+" 代码块
+Bundle 'git://github.com/nathanaelkane/vim-indent-guides.git'

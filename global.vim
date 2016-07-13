@@ -10,7 +10,11 @@ set langmenu=zh_CN.UTF-8
 syntax enable
 syntax on
  
-"设置配色方案
+" 配色方案
+set background=dark
+"colorscheme solarized
+"colorscheme molokai
+"colorscheme phd
 colorscheme torte
 "设置行号"
 set number
@@ -33,7 +37,24 @@ endif
 
 set foldmethod=indent       " 使用缩进折叠
 set foldlevel=10        " 打开文件时只折叠超过10层以上的
+set foldmethod=syntax
 nnoremap <space> za    
 " 空格操作
 vnoremap <space> zf
 " 空格操作
+"
+"
+"
+" NERDTree的目录
+let g:NERDTreeDirArrows = 1
+let g:NERDTreeDirArrowExpandable = '▸'
+let g:NERDTreeDirArrowCollapsible = '▾'
+
+
+" 代码块显示
+" 随 vim 自启动
+let g:indent_guides_enable_on_vim_startup=1
+" 从第二层开始可视化显示缩进
+let g:indent_guides_start_level=2
+" 色块宽度
+let g:indent_guides_guide_size=1
