@@ -54,3 +54,6 @@ Bundle 'https://github.com/davidhalter/jedi-vim.git'
 Bundle 'https://github.com/scrooloose/nerdtree.git'
 " 代码块
 Bundle 'git://github.com/nathanaelkane/vim-indent-guides.git'
+
+"auto pairs
+Bundle 'https://github.com/jiangmiao/auto-pairs.git'
