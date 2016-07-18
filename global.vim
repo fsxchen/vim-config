@@ -51,6 +51,7 @@ vnoremap <space> zf
 let g:NERDTreeDirArrows = 1
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
+let NERDTreeIgnore=['\.pyc$']	"ignore file in NERDTree
 
 
 " 代码块显示
