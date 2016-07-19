@@ -59,4 +59,6 @@ Bundle 'git://github.com/nathanaelkane/vim-indent-guides.git'
 Bundle 'https://github.com/jiangmiao/auto-pairs.git'
 
 " vim-snipmate
+Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'https://github.com/garbas/vim-snipmate.git'
+Bundle 'tomtom/tlib_vim'

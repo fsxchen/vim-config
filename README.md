@@ -1,9 +1,20 @@
-###`.vimrc`配置
+# VIM 7.4 python IDE
+## 安裝
+
 ```
-source ~/.vim/global.vim
-source ~/.vim/vundle.vim
+git clone https://github.com/fsxchen/vim-config.git ~/.vim
 ```
-###install vundle
+
+##
 ```
-git clone https://github.com/VundleVim/Vundle.vim.git Vundle
+cd ~/.vim
+sh install.sh
+```
+
+## 安裝vim插件
+
+進入`vim`命令行模式
+
+```
+:BundleInstall
 ```
