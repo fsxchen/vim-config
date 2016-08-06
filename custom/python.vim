@@ -5,3 +5,6 @@ au BufNewFile,BufRead *.py set textwidth=79
 au BufNewFile,BufRead *.py set expandtab
 au BufNewFile,BufRead *.py set autoindent
 au BufNewFile,BufRead *.py set fileformat=unix
+
+
+autocmd BufRead *.py nmap <F5> :!python %<CR>
