@@ -7,11 +7,12 @@ au BufNewFile,BufRead *.py set autoindent
 au BufNewFile,BufRead *.py set fileformat=unix
 
 
+autocmd BufNewFile,BufRead *.py nmap <F3> :!pdb %<CR>
+autocmd BufNewFile,BufRead *.py nmap <F5> :call RunPyScript()<CR>
 " autocmd BufNewFile,BufRead *.py nmap <F5> :!python %<CR>
-au BufRead *.py map <buffer> <F5> :w<CR>:!/usr/bin/env python % <CR> 
+" python debug
 autocmd BufNewFile,BufRead *.py nmap <F3> :call SetPyTitle()<CR>
 
-autocmd BufNewFile *.py exec ":call SetPyTitle()" 
 
 func SetPyTitle() 
 	call setline(1,"\#!/usr/bin/env python")
@@ -28,5 +29,19 @@ func SetPyTitle()
 endfunc
 
 
-" python debug
-autocmd BufNewFile,BufRead *.py nmap <F3> :!pdb %<CR>
+func RunPyScript()
+    let file_name = expand("%:p")
+	let file_ext = expand("%:e")
+	let file_cmd = ""
+	let args = input("input args:")
+	let cmd_arg = tr(args, '\n', '')
+	 
+	let file_cmd = '/usr/bin/env python'
+	let file_name = ' ' . file_name
+    if file_cmd != ""
+    	echo "The executable file to compile ". file_ext . " type files."
+    	let cmd = "! ". file_cmd . ' ' . file_name . ' ' . args
+    	"echo "执行命令: ". cmd
+    	exec cmd
+    endif
+endfunc
