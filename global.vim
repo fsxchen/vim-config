@@ -13,7 +13,9 @@ syntax on
 " 配色方案
 set background=dark
 "colorscheme solarized
-colorscheme molokai
+"colorscheme atom-dark-256
+colorscheme monokai
+"colorscheme molokai
 "colorscheme phd
 "colorscheme torte
 
@@ -88,6 +90,31 @@ let g:indent_guides_guide_size=1
 " NERDTreeToggle
 nnoremap <F2> :exe 'NERDTreeToggle'<CR> 
 
+
+"""""""""""""""""""""""""""""""""""""""""
+" 自动运行脚本
+"""""""""""""""""""""""""""""""""""""""""
+autocmd BufNewFile,BufRead *.py nmap <F5> :call AutoRun()<CR>
+map <C-r> :call AutoRun()<CR>
+
+func AutoRun()
+	if &filetype == 'python'
+		let file_name = expand("%:p")
+		let file_ext = expand("%:e")
+		let file_cmd = ""
+		let args = input("input args:")
+		let cmd_arg = tr(args, '\n', '')
+
+		let file_cmd = '/usr/bin/env python'
+		let file_name = ' ' . file_name
+		if file_cmd != ""
+			echo "The executable file to compile ". file_ext . " type files."
+			let cmd = "! ". file_cmd . ' ' . file_name . ' ' . args
+			"echo""执行命令: ".cmd
+			exec cmd
+		endif
+	endif
+endfunc
 
 
 """""""""""""""""""""""""""""""""""""""""
