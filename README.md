@@ -18,3 +18,7 @@ sh install.sh
 ```
 :BundleInstall
 ```
+
++ F2: 打开/关闭目录树
++ F3: 自动插入Title
++ F5: 运行
