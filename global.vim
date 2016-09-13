@@ -78,7 +78,27 @@ nnoremap <F2> :exe 'NERDTreeToggle'<CR>
 ""实现上面函数中的，Last modified功能
 """""""""""""""""""""""""""""""""""""""""
 autocmd BufWrite,BufWritePre,FileWritePre  *.c,*.py    ks|call LastModified()|'s  
+
+function UpdateTitle()
+	normal m'
+	execute '/* Last modified:/s@:.*$@\=strftime(": %Y-%m-%d %H:%M:%S")@'
+	normal ''
+	normal mk
+	execute '/* Filename     :/s@:.*$@\=": ".expand("%:t")@'
+	execute "noh"
+	normal 'k
+	echohl WarningMsg | echo "Successful in updating the copy right." | echohl None
+endfunction'
+
 func LastModified()
+	len n=1
+	while n < 10
+		let line = getline(n)
+		if line =~'^\*\s*\S*Last\smodified:\S*.*$'
+			call UpdateTitle()
+			return
+		endif
+	endwhile
 	if line("$") > 20
 		let l = 20
 	else 
