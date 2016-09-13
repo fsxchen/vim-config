@@ -13,9 +13,9 @@ syntax on
 " 配色方案
 set background=dark
 "colorscheme solarized
-"colorscheme molokai
+colorscheme molokai
 "colorscheme phd
-colorscheme torte
+"colorscheme torte
 
 "设置行号"
 set number
@@ -43,17 +43,33 @@ if &term=="xterm"
     set t_Sf=^[[3%dm
 endif
 
-set foldmethod=indent       " 使用缩进折叠
-set foldlevel=10        " 打开文件时只折叠超过10层以上的
-set foldmethod=syntax
-nnoremap <space> za    
+"----------------------------------
+"设置文件的折叠
+"----------------------------------
+
+set foldenable
+set foldmethod=syntax       " 使用缩进折叠
+set foldcolumn=0
+set foldlevel=1        " 打开文件时只折叠超过10层以上的
+set foldclose=all
+set foldlevelstart=99
+set foldopen-=search
+set foldopen-=undo
+
+nnoremap <Space> @=((foldclosed(line('.'))<0)?'zc':'zo')<cr>
+
+" zm 折叠全部
+" zc 打开全部折叠"
+
+nnoremap <space> zm    
 " 空格操作
-vnoremap <space> zf
+vnoremap <space> zc
 " 空格操作
 
 
-
+"-----------------------------------
 " NERDTree的目录
+"-----------------------------------
 let g:NERDTreeDirArrows = 1
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
@@ -79,33 +95,21 @@ nnoremap <F2> :exe 'NERDTreeToggle'<CR>
 """""""""""""""""""""""""""""""""""""""""
 autocmd BufWrite,BufWritePre,FileWritePre  *.c,*.py    ks|call LastModified()|'s  
 
-function UpdateTitle()
-	normal m'
-	execute '/* Last modified:/s@:.*$@\=strftime(": %Y-%m-%d %H:%M:%S")@'
-	normal ''
-	normal mk
-	execute '/* Filename     :/s@:.*$@\=": ".expand("%:t")@'
-	execute "noh"
-	normal 'k
-	echohl WarningMsg | echo "Successful in updating the copy right." | echohl None
-endfunction'
+func UpdateTitle(line)
+    exe a:line."g/Last modified: /s/Last modified: .*/Last modified:".
+    		\strftime(" %Y-%m-%d %X" ) . "/e"
+endfunc
 
 func LastModified()
-	len n=1
+	let n=1
 	while n < 10
 		let line = getline(n)
-		if line =~'^\*\s*\S*Last\smodified:\S*.*$'
-			call UpdateTitle()
+		if line =~'Last\smodified:\s\S*.*$'
+			call UpdateTitle(n)
 			return
 		endif
+		let n = n+1
 	endwhile
-	if line("$") > 20
-		let l = 20
-	else 
-		let l = line("$")
-	endif
-	exe "1,".l."g/Last modified: /s/Last modified: .*/Last modified:".
-			\strftime(" %Y-%m-%d %X" ) . "/e"
 endfunc
 
 """"""""""""""""""""
