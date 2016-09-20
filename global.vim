@@ -30,6 +30,14 @@ set showmatch
 " 高亮搜索的关键字 
 set hlsearch 
 " 
+"
+
+" 调整vim的窗口的大小
+nmap w= :resize +3<CR>
+nmap w- :resize -3<CR>
+nmap w, :vertical resize -3<CR>
+nmap w. :vertical resize +3<CR>
+
 " 搜索忽略大小写 
 set ignorecase "
 
