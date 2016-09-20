@@ -98,22 +98,39 @@ autocmd BufNewFile,BufRead *.py nmap <F5> :call AutoRun()<CR>
 map <C-r> :call AutoRun()<CR>
 
 func AutoRun()
-	if &filetype == 'python'
-		let file_name = expand("%:p")
-		let file_ext = expand("%:e")
-		let file_cmd = ""
-		let args = input("input args:")
-		let cmd_arg = tr(args, '\n', '')
+	let abs_file_name = expand("%:p")
+	let file_ext = expand("%:e")
+	let args = input("input args:")
+	let cmd_arg = tr(args, '\n', '')
 
+	if &filetype == 'python'
 		let file_cmd = '/usr/bin/env python'
-		let file_name = ' ' . file_name
 		if file_cmd != ""
 			echo "The executable file to compile ". file_ext . " type files."
-			let cmd = "! ". file_cmd . ' ' . file_name . ' ' . args
+			let cmd = "! ". file_cmd . ' ' . abs_file_name . ' ' . args
 			"echo""执行命令: ".cmd
 			exec cmd
 		endif
 	endif
+	if &filetype == 'c'
+	    let f_name = expand("%:t")
+		call BuildC(abs_file_name, f_name, args)
+		call RunC(f_name)
+	endif
+endfunc
+
+func BuildC(abs_file_name, f_name, args)
+	let GCC = 'gcc'
+	let out_file = split(a:f_name, '\.')[0]
+	let cmd = "! ". GCC. ' '. a:abs_file_name .' '. a:args .'-o '. out_file
+	exec cmd
+
+endfunc
+
+func RunC(filename)
+	let start_cmd = split(a:filename, '\.')[0]
+    let cmd = "! ./". start_cmd 
+	exec cmd
 endfunc
 
 
