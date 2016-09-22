@@ -76,3 +76,6 @@ Bundle 'https://github.com/Floobits/floobits-vim.git'
 
 " git 插件
 Plugin 'fugitive.vim'
+
+" 透明设置
+Plugin 'VimTweak'

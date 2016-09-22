@@ -1,5 +1,27 @@
-hi Normal  ctermfg=252 ctermbg=none
-
+" =============================================================================  
+"        << 判断操作系统是 Windows 还是 Linux 和判断是终端还是 Gvim >>  
+" =============================================================================  
+   
+" -----------------------------------------------------------------------------  
+"  < 判断操作系统是否是 Windows 还是 Linux >  
+" -----------------------------------------------------------------------------  
+let g:iswindows = 0  
+let g:islinux = 0  
+if(has("win32") || has("win64") || has("win95") || has("win16"))  
+    let g:iswindows = 1  
+else  
+    let g:islinux = 1  
+endif  
+   
+" -----------------------------------------------------------------------------  
+"  < 判断是终端还是 Gvim >  
+" -----------------------------------------------------------------------------  
+if has("gui_running")  
+    let g:isGUI = 1  
+else  
+    let g:isGUI = 0  
+endif  
+   
 
 
 "设置编码
@@ -15,10 +37,10 @@ syntax enable
 syntax on
  
 " 配色方案
-set background=dark
+"set background=dark
 "colorscheme solarized
-"colorscheme atom-dark-256
-colorscheme monokai
+colorscheme atom-dark-256
+"colorscheme monokai
 "colorscheme molokai
 "colorscheme phd
 "colorscheme torte
