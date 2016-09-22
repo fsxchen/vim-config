@@ -54,9 +54,8 @@ filetype plugin indent on    " required
 " 自动补全
 if v:version >= 704 && has('python')
 	Bundle 'Valloric/YouCompleteMe'
-else
-	Bundle 'https://github.com/davidhalter/jedi-vim.git'
 endif
+Bundle 'https://github.com/davidhalter/jedi-vim.git'
 
 "python自动补全
 

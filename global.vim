@@ -140,6 +140,13 @@ autocmd BufWinEnter \[Buf\ List\] setl nonumber
 " 插件vim-commentary的在脚本中的配置,
 autocmd FileType python,shell,coffee set commentstring=#\ %s
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"YouCompleteMe 的配置
+" let g:ycm_global_ycm_extra_conf=‘~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py‘
+let g:ycm_python_binary_path = 'python'
+nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
+
 
 
 " 搜索忽略大小写 
