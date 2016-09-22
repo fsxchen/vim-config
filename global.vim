@@ -1,3 +1,7 @@
+hi Normal  ctermfg=252 ctermbg=none
+
+
+
 "设置编码
 set encoding=utf-8
 set fencs=utf-8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936
@@ -38,6 +42,84 @@ nmap w- :resize -3<CR>
 nmap w, :vertical resize -3<CR>
 nmap w. :vertical resize +3<CR>
 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"   taglist 
+" "
+let Tlist_Use_Right_Window = 0 " 在左侧显示窗口
+let Tlist_Compart_Format = 1 " 压缩方式
+let Tlist_Exist_OnlyWindow = 1 " 如果只有一个buffer，kill窗口也kill掉buffer
+let Tlist_File_Fold_Auto_Close = 0 " 不要关闭其他文件的tags
+let Tlist_Enable_Fold_Column = 0 " 不要显示折叠树 (鼠标可以点开)
+" 如果 taglist 窗口是最后一个窗口，则退出 vim
+"  
+let Tlist_Exit_OnlyWindow=1
+let Tlist_WinWidth = 25 " taglist窗口宽度
+nmap <silent> <leader>tl :Tlist<cr>
+if has("win32") 
+	let Tlist_Ctags_Cmd = ' ctags' "windows下必须空3个字符,否则解析成gs 
+else 
+	let Tlist_Ctags_Cmd = '/usr/bin/ctags'
+endif
+
+"标签列表窗口显示或隐藏不影响整个gvim窗口大小
+"let Tlist_Inc_Winwidth = 0
+""设置tablist插件只显示当前编辑文件的tag内容，而非当前所有打开文件的tag内容
+let Tlist_Show_One_File=1
+
+
+"-----------------------------------
+" NERDTree的目录
+"-----------------------------------
+let g:NERDTree_title = "[NERDTree]"
+let g:NERDTreeDirArrows = 1
+let g:NERDTreeDirArrowExpandable = '▸'
+let g:NERDTreeDirArrowCollapsible = '▾'
+let NERDTreeIgnore=['\.pyc$']	"ignore file in NERDTree
+
+
+" 代码块显示
+" 随 vim 自启动
+let g:indent_guides_enable_on_vim_startup=1
+" 从第二层开始可视化显示缩进
+let g:indent_guides_start_level=2
+" 色块宽度
+let g:indent_guides_guide_size=1
+
+
+" NERDTreeToggle
+nnoremap <F2> :exe 'WMToggle'<CR> 
+
+
+"""""""""""""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" winmanager 
+"
+let g:winManagerWindowLayout='NERDTree|TagList, BufExplorer'
+" let g:winManagerWindowLayout = 'FileExplorer|TagList'
+" let g:winManagerWindowLayout = 'FileExplorer'
+let g:winManagerWidth = 25
+let g:defaultExplorer = 0
+func! NERDTree_Start()  
+	"执行一个退出命令，关闭自动出现的窗口"
+	exec 'q'	
+	exec 'NERDTree'  
+endfunc  
+  
+func! NERDTree_IsValid()  
+	return 1  
+endfunc  
+nmap wm :WMToggle<cr>
+nmap <C-W><C-F> :FirstExplorerWindow<cr>
+nmap <C-W><C-B> :BottomExplorerWindow<cr>
+autocmd BufWinEnter \[Buf\ List\] setl nonumber
+
+" 插件vim-commentary的在脚本中的配置,
+autocmd FileType python,shell,coffee set commentstring=#\ %s
+
+
+
 " 搜索忽略大小写 
 set ignorecase "
 
@@ -77,29 +159,6 @@ vnoremap <space> zc
 " 空格操作
 
 
-"-----------------------------------
-" NERDTree的目录
-"-----------------------------------
-let g:NERDTreeDirArrows = 1
-let g:NERDTreeDirArrowExpandable = '▸'
-let g:NERDTreeDirArrowCollapsible = '▾'
-let NERDTreeIgnore=['\.pyc$']	"ignore file in NERDTree
-
-
-" 代码块显示
-" 随 vim 自启动
-let g:indent_guides_enable_on_vim_startup=1
-" 从第二层开始可视化显示缩进
-let g:indent_guides_start_level=2
-" 色块宽度
-let g:indent_guides_guide_size=1
-
-
-" NERDTreeToggle
-nnoremap <F2> :exe 'NERDTreeToggle'<CR> 
-
-
-"""""""""""""""""""""""""""""""""""""""""
 " 自动运行脚本
 """""""""""""""""""""""""""""""""""""""""
 autocmd BufNewFile,BufRead *.py nmap <F5> :call AutoRun()<CR>

@@ -24,6 +24,13 @@ Plugin 'file:///home/gmarik/path/to/plugin'
 " The sparkup vim script is in a subdirectory of this repo called vim.
 " Pass the path to set the runtimepath properly.
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+
+Plugin 'taglist.vim'
+Plugin 'winmanager'
+"
+" Commentary: 快速注释。
+Plugin 'tpope/vim-commentary'
+
 " Install L9 and avoid a Naming conflict if you've already installed a
 " different version somewhere else.
 " Plugin 'ascenator/L9', {'name': 'newL9'}
@@ -45,10 +52,13 @@ filetype plugin indent on    " required
 "
 
 " 自动补全
-Bundle 'Valloric/YouCompleteMe'
+if v:version >= 704 && has('python')
+	Bundle 'Valloric/YouCompleteMe'
+else
+	Bundle 'https://github.com/davidhalter/jedi-vim.git'
+endif
 
 "python自动补全
-Bundle 'https://github.com/davidhalter/jedi-vim.git'
 
 "目录树插件
 Bundle 'https://github.com/scrooloose/nerdtree.git'
@@ -63,3 +73,6 @@ Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'https://github.com/garbas/vim-snipmate.git'
 Bundle 'tomtom/tlib_vim'
 Bundle 'https://github.com/Floobits/floobits-vim.git'
+
+" git 插件
+Plugin 'fugitive.vim'

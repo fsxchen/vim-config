@@ -7,6 +7,7 @@ git clone https://github.com/fsxchen/vim-config.git ~/.vim
 
 ##
 ```
+sudo apt-get install ctags
 cd ~/.vim
 sh install.sh
 ```
