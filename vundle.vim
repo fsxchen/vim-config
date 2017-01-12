@@ -71,7 +71,6 @@ Bundle 'https://github.com/jiangmiao/auto-pairs.git'
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'https://github.com/garbas/vim-snipmate.git'
 Bundle 'tomtom/tlib_vim'
-Bundle 'https://github.com/Floobits/floobits-vim.git'
 
 " git 插件
 Plugin 'fugitive.vim'
