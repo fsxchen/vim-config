@@ -57,6 +57,8 @@ set showmatch
 set hlsearch 
 " 
 "
+" 设置字体
+set guifont=Monaco:h20
 
 " 调整vim的窗口的大小
 nmap w= :resize +3<CR>

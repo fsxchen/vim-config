@@ -20,7 +20,7 @@ Plugin 'L9'
 Plugin 'git://git.wincent.com/command-t.git'
 " git repos on your local machine (i.e. when working on your own plugin)
 Plugin 'https://github.com/mindriot101/vim-yapf.git'
-Plugin 'file:///home/gmarik/path/to/plugin'
+" Plugin 'file:///home/gmarik/path/to/plugin'
 " The sparkup vim script is in a subdirectory of this repo called vim.
 " Pass the path to set the runtimepath properly.
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
@@ -55,6 +55,7 @@ filetype plugin indent on    " required
 if v:version >= 704 && has('python')
 	Bundle 'Valloric/YouCompleteMe'
 endif
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 Bundle 'https://github.com/davidhalter/jedi-vim.git'
 
 "python自动补全
