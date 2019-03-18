@@ -29,3 +29,17 @@ func SetPyTitle()
 endfunc
 
 
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+ 
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 0
+"打开文件时检测
+let g:syntastic_check_on_open = 1
+"写文件时检测
+let g:syntastic_check_on_wq = 0
+"指定执行pylint时的conf
+let g:syntastic_python_pylint_post_args = '~/.pylint/pylint_conf/pylint_conf/pylint_pycqa.conf'
+let g:syntastic_python_checkers = ['pylint']
+

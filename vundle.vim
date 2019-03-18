@@ -73,6 +73,9 @@ Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'https://github.com/garbas/vim-snipmate.git'
 Bundle 'tomtom/tlib_vim'
 
+" 代码检查
+Bundle 'https://github.com/vim-syntastic/syntastic.git'
+
 " git 插件
 Plugin 'fugitive.vim'
 
