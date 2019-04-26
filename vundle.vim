@@ -76,6 +76,9 @@ Bundle 'tomtom/tlib_vim'
 " 代码检查
 Bundle 'https://github.com/vim-syntastic/syntastic.git'
 
+" git blame 插件
+Bundle 'https://github.com/zivyangll/git-blame.vim.git'
+
 " git 插件
 Plugin 'fugitive.vim'
 
